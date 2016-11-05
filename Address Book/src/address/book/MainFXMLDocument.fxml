@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane id="AnchorPane" maxHeight="750.0" maxWidth="1300.0" minHeight="750.0" minWidth="1300.0" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="address.book.MainFXMLDocumentController">
+   <children>
+      <VBox layoutX="278.0" layoutY="111.0" prefHeight="700.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ToolBar prefHeight="80.0" prefWidth="1300.0" style="-fx-background-color: linear-gradient(orange,khaki, white);">
+               <items>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon/address.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Address Book">
+                     <font>
+                        <Font name="System Bold" size="41.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow color="#e44a4a" />
+                     </effect>
+                  </Label>
+               </items></ToolBar>
+            <SplitPane dividerPositions="0.29797979797979796" prefHeight="613.0" prefWidth="1300.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ToolBar style="-fx-background-color: khaki;">
+                                <items>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../icon/pList.png" />
+                                       </image>
+                                    </ImageView>
+                                    <HBox prefHeight="28.0" prefWidth="254.0" spacing="20.0">
+                                       <children>
+                                          <Label prefHeight="27.0" prefWidth="95.0" text="Contact List">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox prefWidth="150.0" promptText="All" />
+                                       </children>
+                                    </HBox>
+                                </items>
+                              </ToolBar>
+                              <TableView fx:id="contactTable" onMouseClicked="#handleContactListClickedAction" prefHeight="515.0" prefWidth="384.0">
+                                <columns>
+                                  <TableColumn fx:id="nameColumn" prefWidth="253.0" text="Name" />
+                                  <TableColumn fx:id="nicknameColumn" maxWidth="1.7976931348623157E308" prefWidth="129.0" text="Nickname" />
+                                </columns>
+                              </TableView>
+                              <ToolBar style="-fx-background-color: khaki;">
+                                 <items>
+                                    <TextField fx:id="searchField" onKeyPressed="#handleSearchOnKeyAction" prefHeight="38.0" prefWidth="336.0" promptText="Search by Name or Nickname" />
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../icon/1477731457_search_magnifying_glass_find.png" />
+                                       </image>
+                                    </ImageView>
+                                 </items>
+                              </ToolBar>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <TabPane fx:id="tabPane" layoutX="53.0" prefHeight="538.0" prefWidth="907.0" rotateGraphic="true" scaleZ="2.0" style="-fx-background-color: Snow;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <tabs>
+                            <Tab fx:id="contactInformationAndInformationEditTab" text="Contact Information &amp; Information Edit">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <GridPane layoutX="40.0" layoutY="14.0" prefHeight="505.0" prefWidth="907.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="10.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="345.0" minWidth="10.0" prefWidth="138.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="574.0" minWidth="10.0" prefWidth="344.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="574.0" minWidth="10.0" prefWidth="228.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Label prefHeight="31.0" prefWidth="43.0" text="Name">
+                                                         <font>
+                                                            <Font name="System Bold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="21.0" prefWidth="14.0" text="*" textFill="RED">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Label text="Nickname" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Contact Numbers" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Email" GridPane.rowIndex="7">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Website" GridPane.rowIndex="8">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Country" GridPane.rowIndex="10">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="City" GridPane.rowIndex="11">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Address" GridPane.rowIndex="12">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Notes" GridPane.rowIndex="16">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Birth Date" GridPane.rowIndex="14">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="oldNameField" promptText="Full name" GridPane.columnIndex="1" />
+                                                <TextField fx:id="oldNicknameField" promptText="Nickname" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <TextField fx:id="oldMobileNumberField" promptText="Mobile number" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <tooltip>
+                                                      <Tooltip text="Mobile Number" />
+                                                   </tooltip></TextField>
+                                                <TextField fx:id="oldFaxNumberField" promptText="Fax number" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <tooltip>
+                                                      <Tooltip text="Fax Number" />
+                                                   </tooltip></TextField>
+                                                <TextField fx:id="oldPhoneNumberField" promptText="Phone number" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <tooltip>
+                                                      <Tooltip text="Phone Number" />
+                                                   </tooltip></TextField>
+                                                <TextField fx:id="oldOtherNumberField" promptText="Other number" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <tooltip>
+                                                      <Tooltip text="Other Number" />
+                                                   </tooltip></TextField>
+                                                <TextField fx:id="oldEmailField" promptText="Email" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                                                <TextField fx:id="oldWebsiteField" promptText="Website" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                                                <TextField fx:id="oldCountryField" promptText="Country name" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <TextField fx:id="oldCityField" promptText="City name" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <TextField fx:id="oldAddressField" promptText="Local address" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
+                                                <DatePicker fx:id="oldBirthDatepicker" prefHeight="26.0" prefWidth="210.0" promptText="Birth Date( MM/DD/YYYY)" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                                   <tooltip>
+                                                      <Tooltip text="MM/DD/YYYY" />
+                                                   </tooltip>
+                                                </DatePicker>
+                                                <TextArea fx:id="oldNotesArea" prefHeight="71.0" prefWidth="563.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.rowSpan="3" />
+                                             </children>
+                                          </GridPane>
+                                          <ImageView fx:id="oldProfileImageView" fitHeight="150.0" fitWidth="169.0" layoutX="693.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="40.0">
+                                             <image>
+                                                <Image url="@../../icon/profile.png" />
+                                             </image>
+                                          </ImageView>
+                                          <HBox layoutX="709.0" layoutY="10.0" AnchorPane.rightAnchor="39.0">
+                                             <children>
+                                                <Button fx:id="oldUploadProfilePictureOption" mnemonicParsing="false" onAction="#handleOldUploadProfilePictureAction" prefHeight="26.0" prefWidth="159.0" text="Upload Profile Picture">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                          <VBox layoutX="762.0" layoutY="530.0" spacing="15.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="40.0">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Button fx:id="oldSave" mnemonicParsing="false" onAction="#handleOldSaveAction" prefHeight="25.0" prefWidth="80.0" text="Save" />
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon/save.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Button fx:id="contactDeleteButton" mnemonicParsing="false" onAction="#handleOldDeleteAction" prefHeight="25.0" prefWidth="80.0" text="Delete" />
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon/delete.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Button fx:id="oldEditInfo" mnemonicParsing="false" onAction="#handleOldEditInfoAction" prefHeight="25.0" prefWidth="80.0" text="Edit Info" />
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon/1478174454_icon-136-document-edit.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Button fx:id="oldCancel" mnemonicParsing="false" onAction="#handleContactInfoCancelAction" prefHeight="25.0" prefWidth="80.0" text="Cancel" />
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon/cancel.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab fx:id="createNewContactTab" text="Create New Contact">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <GridPane layoutX="40.0" layoutY="14.0" prefHeight="505.0" prefWidth="907.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="10.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="345.0" minWidth="10.0" prefWidth="138.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="574.0" minWidth="10.0" prefWidth="344.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="574.0" minWidth="10.0" prefWidth="228.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Label prefHeight="31.0" prefWidth="43.0" text="Name">
+                                                         <font>
+                                                            <Font name="System Bold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label prefHeight="21.0" prefWidth="14.0" text="*" textFill="RED">
+                                                         <font>
+                                                            <Font size="17.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Label text="Nickname" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Contact Numbers" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Email" GridPane.rowIndex="7">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Website" GridPane.rowIndex="8">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Country" GridPane.rowIndex="10">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="City" GridPane.rowIndex="11">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Address" GridPane.rowIndex="12">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Notes" GridPane.rowIndex="16">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Birth Date" GridPane.rowIndex="14">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="newNameField" promptText="Full Name" GridPane.columnIndex="1" />
+                                                <TextField fx:id="newNicknameField" promptText="Nickname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="newMobileNumberField" promptText="Mobile Number" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <tooltip>
+                                                      <Tooltip text="Mobile Number" />
+                                                   </tooltip></TextField>
+                                                <TextField fx:id="newFaxNumberField" promptText="Fax Number" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <tooltip>
+                                                      <Tooltip text="Fax Number" />
+                                                   </tooltip></TextField>
+                                                <TextField fx:id="newPhoneNumberField" promptText="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <tooltip>
+                                                      <Tooltip text="Phone Number" />
+                                                   </tooltip></TextField>
+                                                <TextField fx:id="newOtherNumberField" promptText="Other Number" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <tooltip>
+                                                      <Tooltip text="Other Number" />
+                                                   </tooltip></TextField>
+                                                <TextField fx:id="newEmailField" promptText="Email" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                                                <TextField fx:id="newWebsiteField" promptText="Website" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                                                <TextField fx:id="newCountryField" promptText="Country Name" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <TextField fx:id="newCityField" promptText="City Name" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <TextField fx:id="newAddressField" promptText="Local Address" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
+                                                <DatePicker fx:id="newBirthDatepicker" prefHeight="26.0" prefWidth="207.0" promptText="Birth Date(MM/DD/YYYY)" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                                                <TextArea fx:id="newNotesArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.rowSpan="3" />
+                                             </children>
+                                          </GridPane>
+                                          <ImageView fx:id="newProfileImageView" fitHeight="150.0" fitWidth="169.0" layoutX="693.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="40.0">
+                                             <image>
+                                                <Image url="@../../icon/profile.png" />
+                                             </image>
+                                             <viewport>
+                                                <Rectangle2D />
+                                             </viewport>
+                                          </ImageView>
+                                          <HBox layoutX="709.0" layoutY="10.0" AnchorPane.rightAnchor="39.0">
+                                             <children>
+                                                <Button fx:id="newUploadProfilePictureOption" mnemonicParsing="false" onAction="#handleNewUploadProfilePictureAction" prefHeight="26.0" prefWidth="159.0" text="Upload Profile Picture" />
+                                             </children>
+                                          </HBox>
+                                          <VBox layoutX="762.0" layoutY="486.0" spacing="15.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="40.0">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Button fx:id="newSaveOption" mnemonicParsing="false" onAction="#handleNewSaveAction" prefHeight="25.0" prefWidth="105.0" text="Save" />
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon/save.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Button fx:id="newResetOption" mnemonicParsing="false" onAction="#handleNewResetAction" prefHeight="25.0" prefWidth="105.0" text="Reset" />
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon/1478169773_update.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                            <Tab fx:id="createNewGroupAndEditGroupInformationTab" text="Create New Group &amp; Edit Group Information">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <SplitPane dividerPositions="0.48066298342541436" layoutX="303.0" layoutY="29.0" prefHeight="570.0" prefWidth="907.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <items>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                   <children>
+                                                      <VBox layoutX="144.0" layoutY="36.0" prefHeight="568.0" prefWidth="431.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                                              <items>
+                                                                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../../icon/add.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label text="Create Group">
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                              </items>
+                                                            </ToolBar>
+                                                            <GridPane>
+                                                              <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="112.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="319.0" />
+                                                              </columnConstraints>
+                                                              <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                              </rowConstraints>
+                                                               <children>
+                                                                  <TextFlow>
+                                                                     <children>
+                                                                        <Label prefHeight="30.0" prefWidth="83.0" text="Group Name" />
+                                                                        <Label text="*" textFill="#f50909">
+                                                                           <font>
+                                                                              <Font size="17.0" />
+                                                                           </font>
+                                                                        </Label>
+                                                                     </children>
+                                                                  </TextFlow>
+                                                                  <TextField promptText="Group name" GridPane.columnIndex="1" />
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets left="5.0" right="5.0" top="5.0" />
+                                                               </padding>
+                                                            </GridPane>
+                                                            <SplitPane dividerPositions="0.48717948717948717" prefHeight="359.0" prefWidth="431.0">
+                                                              <items>
+                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                                     <children>
+                                                                        <TableView layoutX="27.0" layoutY="-14.0" prefHeight="355.0" prefWidth="214.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                          <columns>
+                                                                            <TableColumn prefWidth="213.0" text="select contact for add" />
+                                                                          </columns>
+                                                                        </TableView>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                                     <children>
+                                                                        <TableView layoutX="4.0" layoutY="14.0" prefHeight="355.0" prefWidth="207.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                          <columns>
+                                                                            <TableColumn prefWidth="215.0" text="contact which added" />
+                                                                          </columns>
+                                                                        </TableView>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                              </items>
+                                                            </SplitPane>
+                                                            <VBox prefHeight="67.0" prefWidth="254.0" spacing="15.0">
+                                                               <children>
+                                                                  <HBox>
+                                                                     <children>
+                                                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Save" />
+                                                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../icon/save.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <HBox>
+                                                                     <children>
+                                                                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Reset" />
+                                                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../icon/1478169773_update.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets left="320.0" right="10.0" top="10.0" />
+                                                               </VBox.margin>
+                                                            </VBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                   <children>
+                                                      <VBox layoutX="42.0" layoutY="26.0" prefHeight="568.0" prefWidth="466.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                                              <items>
+                                                                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../../icon/1478174454_icon-136-document-edit.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Label text="Edit Group Information">
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                              </items>
+                                                            </ToolBar>
+                                                            <ToolBar>
+                                                               <items>
+                                                                  <Label text="Select Group for edit info    ">
+                                                                     <font>
+                                                                        <Font name="System Bold" size="13.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                                  <ComboBox prefHeight="26.0" prefWidth="215.0" promptText="Group Name" />
+                                                               </items>
+                                                            </ToolBar>
+                                                            <SplitPane dividerPositions="0.5258620689655172" prefHeight="356.0" prefWidth="466.0">
+                                                              <items>
+                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="489.0" prefWidth="194.0">
+                                                                     <children>
+                                                                        <TableView layoutX="20.0" layoutY="14.0" prefHeight="354.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                          <columns>
+                                                                            <TableColumn prefWidth="239.0" text="select for add" />
+                                                                          </columns>
+                                                                        </TableView>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                                     <children>
+                                                                        <TableView layoutX="-28.0" layoutY="-14.0" prefHeight="354.0" prefWidth="216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                          <columns>
+                                                                            <TableColumn prefWidth="215.0" text="select for remove" />
+                                                                          </columns>
+                                                                        </TableView>
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                              </items>
+                                                            </SplitPane>
+                                                            <HBox prefHeight="75.0" prefWidth="466.0">
+                                                               <children>
+                                                                  <VBox spacing="15.0">
+                                                                     <children>
+                                                                        <HBox>
+                                                                           <children>
+                                                                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Save" />
+                                                                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                                                 <image>
+                                                                                    <Image url="@../../icon/save.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox>
+                                                                           <children>
+                                                                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Delete" />
+                                                                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                                                 <image>
+                                                                                    <Image url="@../../icon/delete1.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                           </children>
+                                                                        </HBox>
+                                                                        <HBox>
+                                                                           <children>
+                                                                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Cancel" />
+                                                                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                                                 <image>
+                                                                                    <Image url="@../../icon/cancel.png" />
+                                                                                 </image>
+                                                                              </ImageView>
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                     <HBox.margin>
+                                                                        <Insets left="350.0" right="10.0" top="10.0" />
+                                                                     </HBox.margin>
+                                                                  </VBox>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </AnchorPane>
+                                            </items>
+                                          </SplitPane>
+                                       </children></AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <ToolBar prefHeight="80.0" prefWidth="1300.0" style="-fx-background-color: linear-gradient(white, khaki, orange);">
+               <items>
+                  <HBox prefHeight="61.0" prefWidth="177.0" translateX="780.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleCreateNewContactAction" prefHeight="26.0" prefWidth="180.0" text="Create new Contact">
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </Button>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/edit.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox translateX="790.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleCreateNewGroupOrEditGroupInfoAction" prefHeight="26.0" prefWidth="258.0" text="Create New Group or Edit Group Info">
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </Button>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon/add.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </items></ToolBar>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
