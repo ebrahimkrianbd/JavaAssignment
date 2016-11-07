@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -51,6 +52,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.SwipeEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.VBoxBuilder;
+import javafx.scene.shape.Path;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -274,14 +276,12 @@ public class MainFXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+//        Path currentRelativePath =  Paths.get("");
         
         File theDir = new File("AddressBook/Data/Image");
-
-
         if (!theDir.exists()) {
             System.out.println("creating directory: ");
             boolean result = false;
-
             try{
             theDir.mkdirs();
                 result = true;
@@ -294,13 +294,18 @@ public class MainFXMLDocumentController implements Initializable {
         }   
         }
         
+        String s = Paths.get("profile.png").toAbsolutePath().normalize().toString();
+        System.out.println("Current relative path is: " + s);
+        File source = new File(s);
+
 
         currentIndex = 0;
         disable();
+
         oldEditInfo.setDisable(true);
-        tabPane.getSelectionModel().select(contactInformationAndInformationEditTab);
-        contactInformationAndInformationEditTab.setDisable(false);
-        createNewContactTab.setDisable(true);
+        tabPane.getSelectionModel().select(createNewContactTab);
+//        contactInformationAndInformationEditTab.setDisable(false);
+//        createNewContactTab.setDisable(true);
         createNewGroupAndEditGroupInformationTab.setDisable(true);
         
         
@@ -522,6 +527,7 @@ public class MainFXMLDocumentController implements Initializable {
     @FXML
     private void handleNewUploadProfilePictureAction(ActionEvent event) {
             FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choose a picture for set profile picture");
             File source = fileChooser.showOpenDialog(null);
             if(source!=null){
         try{
@@ -651,6 +657,7 @@ public class MainFXMLDocumentController implements Initializable {
     private void handleOldUploadProfilePictureAction(ActionEvent event) {
         
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose a picture for set profile picture");
             File source = fileChooser.showOpenDialog(null);
             if(source!=null){
         try{
@@ -711,12 +718,11 @@ public class MainFXMLDocumentController implements Initializable {
 
         oldEditInfo.setDisable(false);
         tabPane.getSelectionModel().select(contactInformationAndInformationEditTab);
-        contactInformationAndInformationEditTab.setDisable(false);
-        createNewContactTab.setDisable(true);
-        createNewGroupAndEditGroupInformationTab.setDisable(true);
+//        contactInformationAndInformationEditTab.setDisable(false);
+//        createNewContactTab.setDisable(true);
+//        createNewGroupAndEditGroupInformationTab.setDisable(true);
     }
 
-    @FXML
     private void handleCreateNewContactAction(ActionEvent event) {
         tabPane.getSelectionModel().select(createNewContactTab);
         contactInformationAndInformationEditTab.setDisable(true);
@@ -724,7 +730,6 @@ public class MainFXMLDocumentController implements Initializable {
         createNewGroupAndEditGroupInformationTab.setDisable(true);
     }
 
-    @FXML
     private void handleCreateNewGroupOrEditGroupInfoAction(ActionEvent event) {
         tabPane.getSelectionModel().select(createNewGroupAndEditGroupInformationTab);
         contactInformationAndInformationEditTab.setDisable(true);
@@ -956,6 +961,28 @@ public class MainFXMLDocumentController implements Initializable {
         contactInformationAndInformationEditTab.setDisable(false);
         createNewContactTab.setDisable(true);
         createNewGroupAndEditGroupInformationTab.setDisable(true);
+    }
+
+    @FXML
+    private void handleGooglePlusOverViewAction(MouseEvent event) {
+        try {
+            new ProcessBuilder("x-www-browser", "https://plus.google.com/u/0/109281343153051788231").start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleFacebookOverViewAction(MouseEvent event) {
+        try {
+            new ProcessBuilder("x-www-browser", "https://www.facebook.com/arifin.rian.7/").start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleAboutUpdateAction(MouseEvent event) {
     }
 
 

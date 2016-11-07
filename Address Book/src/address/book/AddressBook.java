@@ -5,10 +5,13 @@
  */
 package address.book;
 
+import java.io.File;
+import java.nio.file.Paths;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -22,9 +25,8 @@ public class AddressBook extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("MainFXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
-        
-        stage.setTitle("Address Book by Rian");
-//        stage.setResizable(true);
+        stage.setTitle("Address Book");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -37,3 +39,5 @@ public class AddressBook extends Application {
     }
     
 }
+
+//        String s = Paths.get("profile.png").toAbsolutePath().normalize().toString();
