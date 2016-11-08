@@ -958,9 +958,9 @@ public class MainFXMLDocumentController implements Initializable {
         oldEditInfo.setDisable(false);
         disable();
         tabPane.getSelectionModel().select(contactInformationAndInformationEditTab);
-        contactInformationAndInformationEditTab.setDisable(false);
-        createNewContactTab.setDisable(true);
-        createNewGroupAndEditGroupInformationTab.setDisable(true);
+//        contactInformationAndInformationEditTab.setDisable(false);
+//        createNewContactTab.setDisable(true);
+//        createNewGroupAndEditGroupInformationTab.setDisable(true);
     }
 
     @FXML
