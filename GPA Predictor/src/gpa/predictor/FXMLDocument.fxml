@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="2000.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpa.predictor.FXMLDocumentController">
+   <children>
+      <VBox layoutX="200.0" layoutY="40.0" prefHeight="2000.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ToolBar prefHeight="75.0" prefWidth="800.0">
+               <items>
+                  <ImageView fitHeight="51.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../seu.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="46.0" prefWidth="369.0" text="Southeast University" textFill="#1301dd">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+                  <Label text="Semester GPA Predictor">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </Label>
+               </items>
+            </ToolBar>
+            <ScrollPane prefHeight="1500.0" prefWidth="800.0">
+               <content>
+                  <AnchorPane prefHeight="1474.0" prefWidth="800.0">
+                     <children>
+                        <AnchorPane prefHeight="360.0" prefWidth="800.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <GridPane layoutX="238.0" layoutY="229.0" prefHeight="129.0" prefWidth="712.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="229.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="69.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="816.0" minWidth="10.0" prefWidth="643.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label prefHeight="47.0" prefWidth="72.0" text="Name">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="42.0" prefWidth="50.0" text="ID" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nameLabel" prefHeight="54.0" prefWidth="579.0" textFill="#2200ff" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="idLabel" prefHeight="59.0" prefWidth="610.0" textFill="#2200ff" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                              <Label fx:id="massegeLabel" layoutX="246.0" layoutY="12.0" prefHeight="107.0" prefWidth="700.0" textFill="RED">
+                                 <font>
+                                    <Font name="System Bold" size="26.0" />
+                                 </font>
+                              </Label>
+                              <ListView fx:id="idListView" layoutX="404.0" layoutY="41.0" onMouseClicked="#handleListViewSelectAction" prefHeight="319.0" prefWidth="207.0" AnchorPane.leftAnchor="10.0" />
+                              <TextField fx:id="searchField" layoutX="-8.0" layoutY="9.0" onAction="#handleSearchStudentIdAction" onKeyReleased="#handleSearchListViewKeyStudentIdAction" prefHeight="26.0" prefWidth="206.0" promptText="Search by 5digits Student ID" AnchorPane.leftAnchor="10.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane layoutX="14.0" layoutY="379.0" minHeight="0.0" minWidth="0.0" prefHeight="549.0" prefWidth="870.0">
+                           <children>
+                              <VBox layoutX="198.0" layoutY="64.0" prefHeight="471.0" prefWidth="645.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                      <items>
+                                          <Label text="Current Position" textFill="#3f9415">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                      </items>
+                                    </ToolBar>
+                                    <TableView fx:id="currentPositionTableView" prefHeight="467.0" prefWidth="898.0">
+                                      <columns>
+                                          <TableColumn fx:id="currentPositionSemesterColumn" prefWidth="76.0" text="Semester" />
+                                        <TableColumn fx:id="currentPositionCourseCodeColumn" prefWidth="117.0" text="Course Code" />
+                                        <TableColumn fx:id="currentPositionCourseTitleColumn" prefWidth="445.0" text="Course Title" />
+                                          <TableColumn fx:id="currentPositionCreditsColumn" prefWidth="90.0" text="Credits" />
+                                          <TableColumn fx:id="currentPositionGradeColumn" minWidth="0.0" prefWidth="94.0" text="Grade" />
+                                      </columns>
+                                    </TableView>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="126.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="515.0" minWidth="10.0" prefWidth="190.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="515.0" minWidth="10.0" prefWidth="80.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="515.0" minWidth="10.0" prefWidth="32.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="515.0" minWidth="10.0" prefWidth="394.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="Credits attempted:" />
+                                          <Label prefHeight="16.0" prefWidth="45.0" text="CGPA:" GridPane.columnIndex="3" />
+                                          <Label fx:id="creditsAttemptedLabel" prefHeight="16.0" prefWidth="71.0" GridPane.columnIndex="1" />
+                                          <Label fx:id="cgpaLabel" prefHeight="16.0" prefWidth="72.0" GridPane.columnIndex="4" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane layoutX="21.0" layoutY="971.0" minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="863.0">
+                           <children>
+                              <VBox layoutX="55.0" prefHeight="529.0" prefWidth="645.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ToolBar prefHeight="28.0" prefWidth="645.0">
+                                      <items>
+                                          <Label text="Predictor" textFill="#3f9415">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Choose semester ID for prediction GPA" translateX="200.0" />
+                                          <ComboBox fx:id="semesterIdChooser" onAction="#handlePredictionGPAbySemesterAction" prefHeight="26.0" prefWidth="66.0" translateX="200.0" />
+                                      </items>
+                                    </ToolBar>
+                                    <TableView fx:id="predictorTableView" prefHeight="361.0" prefWidth="645.0">
+                                      <columns>
+                                        <TableColumn fx:id="predictorCourseCodeTableColumn" prefWidth="117.0" text="Course Code" />
+                                        <TableColumn fx:id="predictorCourseTitleTableColumn" prefWidth="377.9999694824219" text="Course Title" />
+                                          <TableColumn fx:id="predictorCreditsTableColumn" prefWidth="101.0" text="Credits" />
+                                          <TableColumn fx:id="predictorRealGradeTableColumn" prefWidth="151.0" text="Real Grade" />
+                                          <TableColumn fx:id="predictorPredictGradeTableColumn" prefWidth="114.0" text="Predict Grade" />
+                                      </columns>
+                                    </TableView>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="115.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="170.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="70.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="80.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="135.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="9.0" prefWidth="16.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="71.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="189.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label prefHeight="16.0" prefWidth="117.0" text="Assumption GPA:" />
+                                          <Label fx:id="assumptionGPALabel" prefHeight="16.0" prefWidth="60.0" GridPane.columnIndex="1" />
+                                          <Label fx:id="actualGPALabel" prefHeight="16.0" prefWidth="55.0" GridPane.columnIndex="4" />
+                                          <Label text="Actual GPA:" GridPane.columnIndex="3" />
+                                          <Label text="True Error:" GridPane.columnIndex="6" />
+                                          <Label fx:id="trueErrorLabel" prefHeight="16.0" prefWidth="69.0" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+            <ToolBar prefHeight="56.0" prefWidth="1300.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
