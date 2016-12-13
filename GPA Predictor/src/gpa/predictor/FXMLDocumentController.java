@@ -79,7 +79,6 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<PredictInfo, String> predictorRealGradeTableColumn;
     @FXML
     private TableColumn<PredictInfo, String> predictorPredictGradeTableColumn;
-    
 
     @FXML
     private Label assumptionGPALabel;
@@ -150,176 +149,6 @@ public class FXMLDocumentController implements Initializable {
             }
             idListView.setItems(idList);
 
-//            Statement statement = connection.createStatement();
-//            Statement statement2 = connection.createStatement();
-//            Statement statement3 = connection.createStatement();
-//            Statement statement4 = connection.createStatement();
-//            Statement statement5 = connection.createStatement();
-//            int currentSemesterId = currentSemester();
-//
-//            String query = "select * from student;";
-//            ResultSet resultSet = statement.executeQuery(query);
-//            while (resultSet.next()) {
-//
-//                String studentName = "";
-//                String studentId = "";
-//                int batch = -1;
-//                ObservableList<Course> course = FXCollections.observableArrayList();
-//                ObservableList<CGPA> cgpa = FXCollections.observableArrayList();
-//
-//                studentName = resultSet.getString("studentName");
-//                studentId = resultSet.getString("studentId");
-//
-//                String query3 = "select * from registration where studentId = '" + studentId + "';";
-//                ResultSet resultSet3 = statement3.executeQuery(query3);
-//                while (resultSet3.next()) {
-//                    int semesterId = 0;
-//                    String facultyInitials = "";
-//                    String courseCode = "";
-//                    String courseTitle = "";
-//                    double credits = 0;
-//                    String grade = "";
-//
-//                    semesterId = resultSet3.getInt("semesterId");
-//                    facultyInitials = resultSet3.getString("facultyInitials");
-//                    courseCode = resultSet3.getString("courseCode");
-//
-//                    String query4 = "select * from course where courseCode = '" + courseCode + "';";
-//                    ResultSet resultSet4 = statement4.executeQuery(query4);
-//                    while (resultSet4.next()) {
-//                        courseTitle = resultSet4.getString("courseTitle");
-//                        credits = resultSet4.getDouble("credits");
-//                    }
-//
-//                    String query5 = "select * from grades where studentId = '" + studentId
-//                            + "' and courseCode = '" + courseCode
-//                            + "' and facultyInitials = '" + facultyInitials
-//                            + "' and semesterId = '" + semesterId + "';";
-//                    ResultSet resultSet5 = statement5.executeQuery(query5);
-//                    while (resultSet5.next()) {
-//                        grade = resultSet5.getString("grade");
-//
-//                    }
-//
-//                    course.add(new Course(semesterId, facultyInitials, courseCode, courseTitle, credits, grade));
-//                }
-//
-//                int len = course.size();
-//                System.out.println(studentId);
-//                double creditCounter = 0;
-//                double gpa = 0;
-//                double semesterGpa = 0;
-//                double semesterCgpa = 0;
-//
-//                double creditCounterforSemester = 0;
-//                if (len != 0) {
-//                    int semesterId = course.get(0).getSemesterId();
-//
-//                    for (int i = 0; i < len; i++) {
-//                        String courseGrade = course.get(i).getGrade();
-//                        double courseCredits = course.get(i).getCredits();
-//                        int sId = course.get(i).getSemesterId();
-//                        if (semesterId != sId || len - 1 == i) {
-//                            semesterGpa = (gpa - (semesterCgpa * (creditCounter - creditCounterforSemester))) / creditCounterforSemester;
-//                            semesterCgpa = gpa / creditCounter;
-//
-//                            cgpa.add(new CGPA(semesterId, semesterGpa, semesterCgpa, creditCounter));
-//                            semesterId = course.get(i).getSemesterId();
-//                            creditCounterforSemester = 0;
-//                        }
-//                        if (course.get(i).getSemesterId() != currentSemesterId) {
-//                            for (int j = i - 1; j >= 0; j--) {
-//                                if (course.get(i).getCourseCode().equals(course.get(j).getCourseCode())) {
-//                                    if (course.get(j).getGrade().equals("A+")) {
-//                                        gpa -= 4.00 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("A")) {
-//                                        gpa -= 3.75 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("A-")) {
-//                                        gpa -= 3.50 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("B+")) {
-//                                        gpa -= 3.25 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("B")) {
-//                                        gpa -= 3.00 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("B-")) {
-//                                        gpa -= 2.75 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("C+")) {
-//                                        gpa -= 2.50 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("C")) {
-//                                        gpa -= 2.25 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("D")) {
-//                                        gpa -= 2.00 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    } else if (course.get(j).getGrade().equals("F")) {
-//                                        gpa -= 0.00 * course.get(j).getCredits();
-//                                        creditCounter -= course.get(j).getCredits();
-//                                    }
-//                                    break;
-//                                }
-//                            }
-//                        }
-//
-//                        if (courseGrade.equals("A+")) {
-//                            gpa += 4.00 * courseCredits;
-//                            creditCounterforSemester += courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("A")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 3.75 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("A-")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 3.50 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("B+")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 3.25 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("B")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 3.00 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("B-")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 2.75 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("C+")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 2.50 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("C")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 2.25 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("D")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 2.00 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        } else if (courseGrade.equals("F")) {
-//                            creditCounterforSemester += courseCredits;
-//                            gpa += 0.00 * courseCredits;
-//                            creditCounter += courseCredits;
-//                        }
-//
-//                    }
-//                }
-//                int length = cgpa.size();
-//                System.out.println(studentName + "      total complete credit = " + creditCounter);
-//                for (int i = 0; i < length; i++) {
-//                    System.out.println("Semester ID: " + cgpa.get(i).getSemesterId()
-//                            + " CGPA = " + cgpa.get(i).getSemesterCgpa()
-//                            + "  GPA = " + cgpa.get(i).getSemesterGpa());
-//                }
-//
-//                studentList.add(new Student(studentId, studentName, course, cgpa));
-//            }
         } catch (SQLException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -328,7 +157,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleSearchStudentIdAction(ActionEvent event) {
-//        semesterIdChooser.setSelectionModel(null);
+        semesterIdList = FXCollections.observableArrayList();
         studentId = "";
         boolean tableViewOk = false;
         massegeLabel.setText("");
@@ -401,22 +230,6 @@ public class FXMLDocumentController implements Initializable {
                         }
                         String grade = resultSet2.getString("grade");
                         courseList.add(new Course(semesterId, facultyInitials, courseCode, courseTitle, credits, grade));
-//                        while (resultSet2.next()) {
-//                            semesterId = resultSet2.getInt("semesterId");
-//                            facultyInitials = resultSet2.getString("facultyInitials");
-//                            courseCode = resultSet2.getString("courseCode");
-//                            courseTitle = "";
-//                            Statement statement4 = connection.createStatement();
-//                            String query4 = "select * from course where courseCode = '" + courseCode + "';";
-//                            ResultSet resultSet4 = statement4.executeQuery(query4);
-//                            if (resultSet4.next()) {
-//                                courseTitle = resultSet3.getString("courseTitle");
-//                            }
-//                            credits = resultSet2.getInt("courseCode");;
-//                            grade = resultSet2.getString("grade");
-//                            courseList.add(new Course(semesterId, facultyInitials, courseCode, courseTitle, credits, grade));
-//
-//                        }
 
                     }
                     if (!tableViewOk) {
@@ -433,20 +246,11 @@ public class FXMLDocumentController implements Initializable {
                             semester1 = resultSet5.getInt("semesterId");
                             if (semester1 != semester2) {
                                 semesterIdList.add(semester1);
-//                            System.out.println(semester1);
+
                                 semester2 = semester1;
                             }
                         }
 
-//                        int semesterId;
-//                        double semesterGpa;
-//                        double semesterCgpa;
-//                        double semesterCreitsH;
-//                        double countCredits = 0;
-//                        double countCredi = 0;
-//                        
-//                        int courseListLen = courseList.size();
-//                        for(int i=0; i<courseListLen; i++){
                         int courseListLen = courseList.size();
                         double creditCounter = 0;
                         double gpa = 0;
@@ -557,56 +361,6 @@ public class FXMLDocumentController implements Initializable {
 
                 }
 
-//            int idLen = studentList.size();
-//            int i = 0;
-//            for (i = 0; i < idLen; i++) {
-//                String studentId = studentList.get(i).getStudentId();
-//                if (studentId.equals(search)) {
-//                    studentIndex = i;
-//                    break;
-//                }
-//            }
-//
-//            if (i < idLen) {
-//                int lenght = studentList.get(i).getCourse().size();
-//                int r;
-//                for (r = 0; r < lenght; r++) {
-//                    String G = studentList.get(i).getCourse().get(r).getGrade();
-//                    if (G.equals("A+") || G.equals("A") || G.equals("A-")
-//                            || G.equals("B+") || G.equals("B") || G.equals("B-")
-//                            || G.equals("C+") || G.equals("C") || G.equals("D") || G.equals("F")) {
-//                        tempCourse.add(studentList.get(i).getCourse().get(r));
-//                    }
-//                }
-//                nameLabel.setText(studentList.get(i).getStudentName());
-//                idLabel.setText(studentList.get(i).getStudentId());
-//                if (r > 0) {
-//                    currentPositionTableView.setItems(tempCourse);
-//                    currentPositionSemesterColumn.setCellValueFactory(Data -> new SimpleIntegerProperty(Data.getValue().getSemesterId()));
-//                    currentPositionCourseCodeColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getCourseCode()));
-//                    currentPositionCourseTitleColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getCourseTitle()));
-//                    currentPositionCreditsColumn.setCellValueFactory(Data -> new SimpleDoubleProperty(Data.getValue().getCredits()));
-//                    currentPositionGradeColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getGrade()));
-//                    int lenCgpa = studentList.get(i).getCgpa().size();
-//                    int lenTemp = tempCourse.size();
-//                    int semesterNumber = tempCourse.get(lenTemp - 1).getSemesterId();
-//                    int a;
-//                    for (a = lenCgpa - 1; a >= 0; a--) {
-//                        if (semesterNumber == studentList.get(i).getCgpa().get(a).getSemesterId()) {
-//                            break;
-//                        }
-//                    }
-//                    String output = String.format("%.3f", studentList.get(i).getCgpa().get(a).getSemesterCgpa());
-//                    cgpaLabel.setText(output);
-//                    creditsAttemptedLabel.setText("" + studentList.get(i).getCgpa().get(a).getSemesterCreitsH());
-//                    semesterIdChooser.setItems(studentList.get(i).getCgpa());
-//                } else {
-//                    massegeLabel.setText("Data not available");
-//                }
-//
-//            } else {
-//                massegeLabel.setText("Data not available");
-//            }
             } catch (SQLException ex) {
                 Logger.getLogger(FXMLDocumentController.class
                         .getName()).log(Level.SEVERE, null, ex);
@@ -625,10 +379,6 @@ public class FXMLDocumentController implements Initializable {
                 creditsAttemptedLabel.setText("" + cgpaList.get(cgpaList.size() - 1).getSemesterCreitsH());
             }
 
-//            int cgpaLen = cgpaList.size();
-//            for (int i = 0; i < cgpaLen; i++) {
-//                System.out.println(cgpaList.get(i));
-//            }
         }
     }
 
@@ -649,6 +399,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleListViewSelectAction(MouseEvent event) {
+        semesterIdList = FXCollections.observableArrayList();
         studentId = "";
         String search = idListView.getSelectionModel().getSelectedItem();
         boolean tableViewOk = false;
@@ -659,7 +410,6 @@ public class FXMLDocumentController implements Initializable {
         courseList.clear();
         cgpaList.clear();
         semesterIdList.clear();
-//        semesterIdChooser.setItems(semesterIdList);
         nameLabel.setText("");
         idLabel.setText("");
         try {
@@ -844,6 +594,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handlePredictionGPAbySemesterAction(ActionEvent event) {
+        predictInfoList = FXCollections.observableArrayList();
         int semesterIdForPrediction = semesterIdChooser.getSelectionModel().getSelectedItem();
         System.out.println(semesterIdForPrediction);
         try {
@@ -1037,8 +788,9 @@ public class FXMLDocumentController implements Initializable {
 //                    System.out.println(cgpaFR);
 //                    
 //                    System.out.println(gpaFR);
-                    if(!Double.isNaN(gpaFR) && !Double.isNaN(cgpaFR))
-                    regression.add(new Regression(cgpaFR, gpaFR, cgpaFR * gpaFR, cgpaFR * cgpaFR));
+                    if (!Double.isNaN(gpaFR) && !Double.isNaN(cgpaFR)) {
+                        regression.add(new Regression(cgpaFR, gpaFR, cgpaFR * gpaFR, cgpaFR * cgpaFR));
+                    }
                 }
                 boolean F2check = false;
                 if (!F1check) {
@@ -1190,8 +942,9 @@ public class FXMLDocumentController implements Initializable {
                         }
                         cgpaFR = cgpaFR / totalCreditsFR;
 
-                    if(!Double.isNaN(gpaFR) && !Double.isNaN(cgpaFR))
-                        regression.add(new Regression(cgpaFR, gpaFR, cgpaFR * gpaFR, cgpaFR * cgpaFR));
+                        if (!Double.isNaN(gpaFR) && !Double.isNaN(cgpaFR)) {
+                            regression.add(new Regression(cgpaFR, gpaFR, cgpaFR * gpaFR, cgpaFR * cgpaFR));
+                        }
                     }
                 }
                 boolean F3check = false;
@@ -1345,8 +1098,9 @@ public class FXMLDocumentController implements Initializable {
                         }
                         cgpaFR = cgpaFR / totalCreditsFR;
 
-                    if(!Double.isNaN(gpaFR) && !Double.isNaN(cgpaFR))
-                        regression.add(new Regression(cgpaFR, gpaFR, cgpaFR * gpaFR, cgpaFR * cgpaFR));
+                        if (!Double.isNaN(gpaFR) && !Double.isNaN(cgpaFR)) {
+                            regression.add(new Regression(cgpaFR, gpaFR, cgpaFR * gpaFR, cgpaFR * cgpaFR));
+                        }
                     }
                 }
 
@@ -1470,7 +1224,7 @@ public class FXMLDocumentController implements Initializable {
                                     cgpaFR += 2.0 * creditsPS;
                                     totalCreditsFR += creditsPS;
                                 } else if (gradePS.equals("F")) {
-                                    cgpaFR += 0* creditsPS;
+                                    cgpaFR += 0 * creditsPS;
                                     totalCreditsFR += creditsPS;
                                 }
 
@@ -1500,8 +1254,9 @@ public class FXMLDocumentController implements Initializable {
                         }
                         cgpaFR = cgpaFR / totalCreditsFR;
 
-                    if(!Double.isNaN(gpaFR) && !Double.isNaN(cgpaFR))
-                        regression.add(new Regression(cgpaFR, gpaFR, cgpaFR * gpaFR, cgpaFR * cgpaFR));
+                        if (!Double.isNaN(gpaFR) && !Double.isNaN(cgpaFR)) {
+                            regression.add(new Regression(cgpaFR, gpaFR, cgpaFR * gpaFR, cgpaFR * cgpaFR));
+                        }
                     }
                 }
 
@@ -1530,13 +1285,13 @@ public class FXMLDocumentController implements Initializable {
 
                     double a1 = ((lenRegression * Sxy) - (Sx * Sy)) / ((lenRegression * SxSqr) - (Sx * Sx));
                     double a0 = (Sy / lenRegression) - (a1 * (Sx / lenRegression));
-                    if(Double.isNaN(a0)){
+                    if (Double.isNaN(a0)) {
                         a0 = 0;
                     }
-                    if(Double.isNaN(a1)){
+                    if (Double.isNaN(a1)) {
                         a1 = 0;
                     }
-                    
+
                     double X = 3.40;
                     int cgpaListLen = cgpaList.size();
                     for (int i = 0; i < cgpaListLen; i++) {
@@ -1547,49 +1302,107 @@ public class FXMLDocumentController implements Initializable {
                         }
 
                     }
-                    
-                    double Y = a0+( a1*X);
-                    
 
-                    
-                    if(Y>3.99)predictGrade = "A+";
-                    else if(Y>3.74)predictGrade = "A";
-                    else if(Y>3.49)predictGrade = "A-";
-                    else if(Y>3.24)predictGrade = "B+";
-                    else if(Y>2.99)predictGrade = "B";
-                    else if(Y>2.74)predictGrade = "B-";
-                    else if(Y>2.49)predictGrade = "C+";
-                    else if(Y>2.24)predictGrade = "C";
-                    else if(Y>1.99)predictGrade = "D";
-                    else predictGrade = "F";
-                    
+                    double Y = a0 + (a1 * X);
+
+                    if (Y > 3.99) {
+                        predictGrade = "A+";
+                    } else if (Y > 3.74) {
+                        predictGrade = "A";
+                    } else if (Y > 3.49) {
+                        predictGrade = "A-";
+                    } else if (Y > 3.24) {
+                        predictGrade = "B+";
+                    } else if (Y > 2.99) {
+                        predictGrade = "B";
+                    } else if (Y > 2.74) {
+                        predictGrade = "B-";
+                    } else if (Y > 2.49) {
+                        predictGrade = "C+";
+                    } else if (Y > 2.24) {
+                        predictGrade = "C";
+                    } else if (Y > 1.99) {
+                        predictGrade = "D";
+                    } else {
+                        predictGrade = "F";
+                    }
+
                 }
 
                 predictInfoList.add(new PredictInfo(courseCode, courseTitle, credits, realGrade, predictGrade));
-
 
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        predictorTableView.setItems(predictInfoList);
-    
-    predictorCourseCodeTableColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getCourseCode()));
-    predictorCourseTitleTableColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getCourseTitle()));
-    predictorCreditsTableColumn.setCellValueFactory(Data -> new SimpleDoubleProperty(Data.getValue().getCredits()));
-    predictorRealGradeTableColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getRealGrade()));
-    predictorPredictGradeTableColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getPredictGrade()));
-    
-    int predictInfoListLen = predictInfoList.size();
-    for(int i=0; i<predictInfoListLen; i++){
-        
-    }
-        
-//        System.out.print("Rian");
-    }
 
+        predictorTableView.setItems(predictInfoList);
+
+        predictorCourseCodeTableColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getCourseCode()));
+        predictorCourseTitleTableColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getCourseTitle()));
+        predictorCreditsTableColumn.setCellValueFactory(Data -> new SimpleDoubleProperty(Data.getValue().getCredits()));
+        predictorRealGradeTableColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getRealGrade()));
+        predictorPredictGradeTableColumn.setCellValueFactory(Data -> new SimpleStringProperty(Data.getValue().getPredictGrade()));
+
+//        int predictInfoListLen = predictInfoList.size();
+//        double predictedgpa = 0;
+//        double predictedTotalCredits = 0;
+//
+//        for (int i = 0; i < predictInfoListLen; i++) {
+//            String a = predictInfoList.get(i).getRealGrade();
+//            double creditsP = predictInfoList.get(i).getCredits();
+//            if (a.equals("A+")) {
+//                predictedgpa += 4.00 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("A")) {
+//                predictedgpa += 3.75 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("A-")) {
+//                predictedgpa += 3.50 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("B+")) {
+//                predictedgpa += 3.25 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("B")) {
+//                predictedgpa += 3.00 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("B-")) {
+//                predictedgpa += 2.75 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("C+")) {
+//                predictedgpa += 2.50 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("C")) {
+//                predictedgpa += 2.25 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("D")) {
+//                predictedgpa += 2.0 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            } else if (a.equals("F")) {
+//                predictedgpa += 0 * creditsP;
+//                predictedTotalCredits += creditsP;
+//            }
+//        }
+//
+//        predictedgpa = predictedgpa / predictedTotalCredits;
+//        double realgpa = -1;
+//        int cgpaListLen = cgpaList.size();
+//        for (int i = 0; i < cgpaListLen; i++) {
+//            if ((semesterIdForPrediction) == cgpaList.get(i).getSemesterId()) {
+//                realgpa = cgpaList.get(i).getSemesterGpa();
+//                break;
+//            }
+//        }
+//
+//        if (realgpa != -1) {
+//            assumptionGPALabel.setText(""+predictedgpa);
+//            actualGPALabel.setText(""+realgpa);
+//            double error = ((realgpa-predictedgpa)/realgpa)*100;
+//            trueErrorLabel.setText(error+"");
+//
+//        }
+
+    }
 
 }
-
